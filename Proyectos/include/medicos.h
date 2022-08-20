@@ -1,6 +1,6 @@
 #include <string>
 using namespace std;
-const int MAX_DOCS = 23;
+const int MAX_DOCS = 30;
 
 typedef struct{
     string nombreMED;
