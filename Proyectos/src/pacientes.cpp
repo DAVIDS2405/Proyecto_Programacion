@@ -3,13 +3,33 @@
 #include "pacientes.h"
 using namespace std;
 
-void Leer_Pac(tPacientes &pacientes)
-{
-
-
+void Cargar_Pac(tLista &lista, bool &ok){
 
 }
+void Guardar_Pac(const tLista &lista){
 
+}
+void Leer_Pac(tPacientes &pacientes){
 
+}
+void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok){
 
-void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok);
+}
+void Eliminar_Pac(tLista &lista, int pos, bool &ok){
+
+}
+string NombreCompleto(tPacientes &pacientes){
+
+}
+void Mostrar_Pac(tPacientes &pacientes){
+
+}
+void Listado_Pac(const tLista &lista){
+
+}
+void Ordenamiento_Pac(int ordenamiento[], int contador){
+
+}
+void Buscar_Pac(tLista &lista, string nombreBuscar, bool &ok){
+    
+}
