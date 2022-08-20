@@ -7,7 +7,7 @@ typedef struct{
     string apellidoMED;
     string edadMED;
     string especialidad;
-    double cedula;
+    string cedula;
 }tDoctores;
 
 typedef struct{
