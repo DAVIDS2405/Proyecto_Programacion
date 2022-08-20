@@ -27,7 +27,7 @@ void Mostrar_Pac(tPacientes &pacientes){
     cout << "Edad del paciente " << pacientes.edadPAC << endl;
     cout << "Cedual del paciente" << pacientes.cedulaPAC << endl;
 }
-void Listado_Pac(const tLista lista){
+void Listado_Pac(tLista lista){
     for (int i = 0; i < lista.contador; i++)
     {
         cout << setw(3) << right << i + 1 << ": ";
