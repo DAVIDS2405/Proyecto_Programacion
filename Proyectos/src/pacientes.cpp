@@ -5,6 +5,31 @@
 #include "pacientes.h"
 using namespace std;
 
+
+int Menu_Pac(){
+    int op = 0;
+    while ((op < 1) || (op > 6))
+    {
+        cout << setw(41) << " --------------------------------------------" << endl;
+        cout << "|" << setw(30) << "Menu Pacientes" << setw(15) << "|" << endl;
+        cout << "|" << setw(24) << "1 - Agregar un nuevo paciente" << setw(21) << "|" << endl;
+        cout << "|" << setw(25) << "2 - Eliminar un paciente" << setw(20) << "|" << endl;
+        cout << "|" << setw(25) << "3 - Ordenar los pacientes" << setw(20) << "|" << endl;
+        cout << "|" << setw(23) << "4 - Consultar pacientes" << setw(22) << "|" << endl;
+        cout << "|" << setw(23) << "5 - Modificar pacientes" << setw(22) << "|" << endl;
+        cout << "|" << setw(23) << "6 - Salir del menu pacientes" << setw(22) << "|" << endl;
+        cout << setw(41) << " --------------------------------------------" << endl;
+
+        cout << setw(10) << " Ingrese la opcion deseada: ";
+        cin >> op;
+        cin.ignore();
+        if ((op < 1) || (op > 6))
+        {
+            cout << "Opcion no valida ingresar un numero valido" << endl;
+        }
+    }
+    return op;
+}
 void Cargar_Pac(tLista &lista, bool &ok)
 {
   tPacientes pacientes;
