@@ -22,6 +22,6 @@ void Guardar(const tLista &lista);
 void LeerDoctor(tDoctores &doctores);
 void InsertarDoctor(tLista &lista, tDoctores doctor, bool &ok);
 void EliminarDoctor(tLista &lista, int pos, bool &ok);
-
 void MostrarDoctor(tDoctores doctor);
 void ListadoDoctores(const tLista &lista);
+void OrdenarDoctores(tLista &lista);
