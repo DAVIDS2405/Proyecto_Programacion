@@ -11,6 +11,6 @@ typedef struct{
 }tDoctores;
 
 typedef struct{
-    tDoctores elementos[MAX_DOCS] = {};
+    tDoctores elementos[MAX_DOCS];
     int contador = 0;
 }tLista;
