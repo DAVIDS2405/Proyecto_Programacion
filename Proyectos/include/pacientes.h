@@ -16,10 +16,10 @@ typedef struct{
 
 int Menu_Pac();
 void Cargar_Pac(tLista &lista, bool &ok);
-void guardar(const tLista &lista);
-void leerPacientes(tPacientes &pacientes);
-void insertarEstudiante(tLista &lista, tPacientes &pacientes, bool &ok);
-void eliminarEstudiante(tLista &lista, int pos, bool &ok);
+void Guardar_Pac(const tLista &lista);
+void Leer_Pac(tPacientes &pacientes);
+void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok);
+void eliminar_Pac(tLista &lista, int pos, bool &ok);
 string nombreCompleto(tPacientes &pacientes);
-void mostrarEstudiante(tPacientes &pacientes);
-void listado(const tLista &lista, double media, int mayor);
+void mostrar_Pac(tPacientes &pacientes);
+void listado_Pac(const tLista &lista, double media, int mayor);
