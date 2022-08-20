@@ -1,4 +1,5 @@
 #include <string>
+using namespace std;
 const int MAX_DOCS = 100;
 
 typedef struct{
