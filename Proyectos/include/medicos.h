@@ -18,7 +18,7 @@ typedef struct{
 //PROTOTIPOS DE LAS FUNCIONES PARA LOS MÉDICOS
 int Menu();
 void Cargar(tLista &lista, bool& ok);
-void Guardar(const tLista &lista)
+void Guardar(const tLista &lista);
 void LeerDoctor(tDoctores &doctores);
 void InsertarDoctor(tLista &lista, tDoctores doctor, bool &ok);
 void EliminarDoctor(tLista &lista, int pos, bool &ok);
