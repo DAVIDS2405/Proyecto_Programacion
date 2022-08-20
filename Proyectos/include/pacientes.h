@@ -14,3 +14,12 @@ typedef struct{
     int contador = 0;
 }tLista;
 
+int Menu_Pac();
+void Cargar_Pac(tLista &lista, bool &ok);
+void guardar(const tLista &lista);
+void leerPacientes(tPacientes &pacientes);
+void insertarEstudiante(tLista &lista, tPacientes &pacientes, bool &ok);
+void eliminarEstudiante(tLista &lista, int pos, bool &ok);
+string nombreCompleto(tPacientes &pacientes);
+void mostrarEstudiante(tPacientes &pacientes);
+void listado(const tLista &lista, double media, int mayor);
