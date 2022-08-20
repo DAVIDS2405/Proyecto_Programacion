@@ -1,23 +1,90 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <iomanip>
 #include "pacientes.h"
 using namespace std;
 
-void Cargar_Pac(tLista &lista, bool &ok){
+void Cargar_Pac(tLista &lista, bool &ok)
+{
+  tPacientes pacientes;
+   ifstream archivo;
+   char aux;
+   
+   lista.contador = 0; // Inicializamos la lista
+   archivo.open("pacientes.txt");
+   if (!archivo.is_open()) {
+      ok = false;
+   }
+   else {
+      ok = true;
+      archivo >> pacientes.cedulaPAC;
+      while ((pacientes.cedulaPAC != "-1") && (lista.contador < MAX_PACIE)) {
+         getline(archivo, pacientes.nombrePAC);
+         getline(archivo, pacientes.apellidoPAC);
+         archivo >> pacientes.edadPAC;
+         archivo.get(aux); 
+         lista.elementos[lista.contador] = pacientes; 
+         lista.contador++; 
+         archivo >> pacientes.cedulaPAC; // Siguiente nombre
+      } 
+      archivo.close();
+   }
+}
+void Guardar_Pac(const tLista &lista)
+{
+   ofstream archivo;
+
+   archivo.open("pacientes.txt");
+   for (int i = 0; i < lista.contador; i++) {
+      archivo << lista.elementos[i].cedulaPAC << endl;
+      archivo << lista.elementos[i].nombrePAC << endl;
+      archivo << lista.elementos[i].apellidoPAC << endl;
+      archivo << lista.elementos[i].edadPAC << endl;
+   }
+   archivo << "-1" << endl; // Centinela 
+   archivo.close();
+}
+void Leer_Pac(tPacientes &pacientes)
+{
+cin.sync(); // Para descar cualquier entrada pendiente
+   cout << "Cedula: ";
+   cin >> pacientes.cedulaPAC;
+   cout << "Nombre: ";
+   getline(cin, pacientes.nombrePAC);
+   cout << "Apellidos: ";
+   getline(cin, pacientes.apellidoPAC);
+   cout << "Edad: ";
+   cin >> pacientes.edadPAC;
+cin.sync(); 
 
 }
-void Guardar_Pac(const tLista &lista){
+void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok)
+{
+
+   ok = true;
+   if (lista.contador == MAX_PACIE) {
+      ok = false;
+   }
+   else {
+      lista.elementos[lista.contador] = pacientes;
+      // Insertamos al final de la lista
+      lista.contador++;
+   }
 
 }
-void Leer_Pac(tPacientes &pacientes){
-
-}
-void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok){
-
-}
-void Eliminar_Pac(tLista &lista, int pos, bool &ok){
-
+void Eliminar_Pac(tLista &lista, int pos, bool &ok)
+{
+       if ((pos < 0) || (pos > lista.contador - 1)) {
+      ok = false; // En caso que no existan elementos en la lista
+   }
+   else {
+      ok = true; 
+      for (int i = pos; i < lista.contador - 1 ; i++) {
+         lista.elementos[i] = lista.elementos[i + 1];
+      }
+      lista.contador--;
+   }
 }
 string NombreCompleto(tPacientes &pacientes){
     return pacientes.nombrePAC + " " + pacientes.apellidoPAC;
