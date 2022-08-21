@@ -1,9 +1,12 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "pacientes.h"
+#include "pacientes.hh"
 using namespace std;
 int MenuPrincipal();
+
+
+
 int main(){
     tLista lista;
     tPacientes pacientes;
