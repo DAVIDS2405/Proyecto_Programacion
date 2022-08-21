@@ -29,13 +29,14 @@ int Menu_Pac(){
     }
     return op;
 }
+//CARGAR
 void Cargar_Pac(tLista &lista, bool &ok)
 {
   tPacientes pacientes;
    ifstream archivo;
    char aux;
    
-   lista.contador = 0; // Inicializamos la lista
+   lista.contador = 0; 
    archivo.open("pacientes.txt");
    if (!archivo.is_open()) {
       ok = false;
@@ -50,11 +51,12 @@ void Cargar_Pac(tLista &lista, bool &ok)
          archivo.get(aux); 
          lista.elementos[lista.contador] = pacientes; 
          lista.contador++; 
-         archivo >> pacientes.cedulaPAC; // Siguiente nombre
+         archivo >> pacientes.cedulaPAC; 
       } 
       archivo.close();
    }
 }
+//GUARDAR
 void Guardar_Pac(const tLista &lista)
 {
    ofstream archivo;
@@ -66,12 +68,13 @@ void Guardar_Pac(const tLista &lista)
       archivo << lista.elementos[i].apellidoPAC << endl;
       archivo << lista.elementos[i].edadPAC << endl;
    }
-   archivo << "-1" << endl; // Centinela 
+   archivo << "-1" << endl; 
    archivo.close();
 }
+//LEER
 void Leer_Pac(tPacientes &pacientes)
 {
-cin.sync(); // Para descar cualquier entrada pendiente
+cin.sync(); 
    cout << "Cedula: ";
    cin >> pacientes.cedulaPAC;
    cout << "Nombre: ";
@@ -83,6 +86,7 @@ cin.sync(); // Para descar cualquier entrada pendiente
 cin.sync(); 
 
 }
+//INSERTAR 
 void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok)
 {
 
@@ -92,15 +96,15 @@ void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok)
    }
    else {
       lista.elementos[lista.contador] = pacientes;
-      // Insertamos al final de la lista
       lista.contador++;
    }
 
 }
+//ELIMINAR
 void Eliminar_Pac(tLista &lista, int pos, bool &ok)
 {
        if ((pos < 0) || (pos > lista.contador - 1)) {
-      ok = false; // En caso que no existan elementos en la lista
+      ok = false; 
    }
    else {
       ok = true; 
@@ -110,6 +114,7 @@ void Eliminar_Pac(tLista &lista, int pos, bool &ok)
       lista.contador--;
    }
 }
+//NOMBRE COMPLETO
 string NombreCompleto(tPacientes &pacientes){
     return pacientes.nombrePAC + " " + pacientes.apellidoPAC;
 }
@@ -118,6 +123,7 @@ void Mostrar_Pac(tPacientes &pacientes){
     cout << "Edad del paciente " << pacientes.edadPAC << endl;
     cout << "Cedual del paciente" << pacientes.cedulaPAC << endl;
 }
+//LISTADO
 void Listado_Pac(tLista lista){
     for (int i = 0; i < lista.contador; i++)
     {
@@ -125,6 +131,7 @@ void Listado_Pac(tLista lista){
         Mostrar_Pac(lista.elementos[i]);
     }
 }
+//ORDENAR 
 void Ordenamiento_Pac(int ordenamiento[], int n){
     int max{0}, min{0}, aux{0}, i{0}, j{0};
     for (i = 0; i < n; i++)
@@ -142,6 +149,7 @@ void Ordenamiento_Pac(int ordenamiento[], int n){
         ordenamiento[min] = aux;
     }
 }
+//BUSCAR 
 void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok){
     tLista listaBus = lista;
     ok = false;
