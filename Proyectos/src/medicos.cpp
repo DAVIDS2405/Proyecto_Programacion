@@ -1,7 +1,7 @@
-#include "medicos.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "medicos.h"
 using namespace std;
 
 int MenuDoctores(){
