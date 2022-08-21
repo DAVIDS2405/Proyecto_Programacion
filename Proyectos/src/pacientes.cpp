@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
-#include "pacientes.hh"
+#include "pacientes.h"
 using namespace std;
 
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "pacientes.hh"
+#include "pacientes.h"
 using namespace std;
 int MenuPrincipal();
 
