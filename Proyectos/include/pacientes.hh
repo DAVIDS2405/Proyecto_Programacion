@@ -1,3 +1,4 @@
+#include<iostream>
 #include <string>
 using namespace std;
 const int MAX_PACIE = 30;
