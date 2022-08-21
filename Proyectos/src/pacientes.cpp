@@ -19,7 +19,6 @@ int Menu_Pac(){
         cout << "|" << setw(23) << "5 - Modificar pacientes" << setw(22) << "|" << endl;
         cout << "|" << setw(23) << "6 - Salir del menu pacientes" << setw(22) << "|" << endl;
         cout << setw(41) << " --------------------------------------------" << endl;
-
         cout << setw(10) << " Ingrese la opcion deseada: ";
         cin >> op;
         cin.ignore();
