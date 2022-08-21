@@ -149,6 +149,42 @@ void EliminarDoctor(tListaDoc &listadoc, int pos, bool &okdoc){
 
     }
 
-
-
 }/// FIN DE LA FUNCIÓN ELIMINAR DOCTOR
+
+
+//NOMBRE COMPLETOS
+string NombreCompleto(tDoctores doctor)
+{
+     return doctor.nombreMED + " " + doctor.apellidoMED;
+}
+void MostrarDoctor(tDoctores doctor)
+{
+    cout << "Nombre del paciente " << NombreCompleto(doctor) << endl;
+    cout << "Edad del paciente " << doctor.edadMED << endl;
+    cout << "Cedual del paciente" << doctor.cedula << endl;
+}
+
+// BUSCAR
+void Buscar_Doctores(tLista &lista, string CedulaBuscar, bool &ok)
+{
+    tLista listaBus = lista;
+    ok = false;
+    int i = 0;
+
+    while ((ok == false) && (i < lista.contador))
+    {
+        if (lista.elementos[i].cedulaMED == CedulaBuscar)
+        {
+            ok = true;
+            cout << "Nombre: " << NombreCompleto(lista.elementos[i]) << endl;
+            cout << "Edad: " << listaBus.elementos[i].edadPAC << endl;
+            cout << "Cedula: " << listaBus.elementos[i].cedulaPAC << endl;
+                }
+        i++;
+    }
+
+    if (ok == false)
+    {
+        cout << "La cedula ingresada no corresponde a ningun medico" << endl;
+    }
+}
