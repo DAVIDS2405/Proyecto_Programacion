@@ -22,6 +22,6 @@ void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok);
 void Eliminar_Pac(tLista &lista, int pos, bool &ok);
 string NombreCompleto(tPacientes &pacientes);
 void Mostrar_Pac(tPacientes &pacientes);
-void Listado_Pac(const tLista &lista);
+void Listado_Pac(tLista lista);
 void Ordenamiento_Pac(int ordenamiento[], int contador);
-void Buscar_Pac(tLista &lista, string nombreBuscar, bool &ok);
+void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok);
