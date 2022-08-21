@@ -184,6 +184,26 @@ void Buscar_Doctores(tListaDoc &lista, string CedulaBuscar, bool &ok)
         }
     }
 }
+//ORDENAR
+void Ordenamiento_Doctores(int ordenamiento[], int n)
+{
+     int max{0}, min{0}, aux{0}, i{0}, j{0};
+    for (i = 0; i < n; i++)
+    {
+        min = i;
+        for (j = i + 1; j < n; j++)
+        {
+            if (ordenamiento[j] < ordenamiento[min])
+            {
+                min = j;
+            }
+        }
+        aux = ordenamiento[i];
+        ordenamiento[i] = ordenamiento[min];
+        ordenamiento[min] = aux;
+    }
+}
+//BUSCAR
 void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
 {
     tListaDoc listaBus = listadoc;
