@@ -11,18 +11,18 @@ typedef struct{
 }tDoctores;
 
 typedef struct{
-    tDoctores elementos[MAX_DOCS];
-    int contador = 0;
-}tLista;
+    tDoctores elementosDoc[MAX_DOCS];
+    int contadorDoc = 0;
+}tListaDoc;
 
 //PROTOTIPOS DE LAS FUNCIONES PARA LOS MÉDICOS
 int MenuDoctores();
-void CargarDoctores(tLista &lista, bool& ok);
-void GuardarDoctores(const tLista &lista);
+void CargarDoctores(tListaDoc &listadoc, bool& okdoc);
+void GuardarDoctores(const tListaDoc &listadoc);
 void LeerDoctor(tDoctores &doctores);
-void InsertarDoctor(tLista &lista, tDoctores doctor, bool &ok);
-void EliminarDoctor(tLista &lista, int pos, bool &ok);
+void InsertarDoctor(tListaDoc &listadoc, tDoctores doctor, bool &okdoc);
+void EliminarDoctor(tListaDoc &listadoc, int pos, bool &okdoc);
 string NombreCompleto(tDoctores doctor);
 void MostrarDoctor(tDoctores doctor);
-void ListadoDoctores(const tLista &lista);
-void OrdenarDoctores(tLista &lista);
+void ListadoDoctores(const tListaDoc &listadoc);
+void OrdenarDoctores(tListaDoc &listadoc);
