@@ -74,8 +74,9 @@ int main(){
                             }
                             break;
                         }
+                        opcionPacientes = Menu_Pac();
                     }
-                    opcionPacientes = Menu_Pac();
+                    
                 }
                 Guardar_Pac(lista);
                 
