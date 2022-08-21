@@ -2,19 +2,9 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
-#include "pacientes.h"
+#include "pacientes.hh"
 using namespace std;
-void Cargar_Pac(tLista &lista, bool &ok);
-int Menu_Pac();
-void Guardar_Pac(const tLista &lista);
-void Leer_Pac(tPacientes &pacientes);
-void Insertar_Pac(tLista &lista, tPacientes &pacientes, bool &ok);
-void Eliminar_Pac(tLista &lista, int pos, bool &ok);
-string NombreCompleto(tPacientes &pacientes);
-void Mostrar_Pac(tPacientes &pacientes);
-void Listado_Pac(tLista lista);
-void Ordenamiento_Pac(tLista lista);
-void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok);
+
 
 int Menu_Pac(){
     int op = 0;
