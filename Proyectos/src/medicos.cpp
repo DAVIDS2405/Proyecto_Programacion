@@ -1,7 +1,7 @@
-#include "medicos.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "medicos.h"
 using namespace std;
 
 int MenuDoctores(){
@@ -144,9 +144,10 @@ void EliminarDoctor(tListaDoc &listadoc, int pos, bool &okdoc){
         okdoc = true;
 
         for(int i = pos; i < listadoc.contadorDoc-1; i++){
-          
+            listadoc.elementosDoc[i] = listadoc.elementosDoc[i+1];
         }
 
+      listadoc.contadorDoc--;
     }
 
 }/// FIN DE LA FUNCIÓN ELIMINAR DOCTOR
