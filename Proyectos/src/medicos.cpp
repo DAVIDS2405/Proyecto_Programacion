@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 #include "medicos.h"
 using namespace std;
 
@@ -228,3 +229,27 @@ void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
         cout << "La cedula ingresada no corresponde a ningun medico" << endl;
     }
 }
+
+
+void MostrarDoctor(tDoctores doctor){
+
+
+      cout << "Nombre del doctor: " << NombreCompleto(doctor) << endl;
+      cout << "Edad del doctor: " << doctor.edadMED << endl;
+      cout << "Cedula del doctor: " << doctor.cedula << endl;
+      cout << "Especialidad del doctor: "<< doctor.especialidad<<endl;
+
+}///FIN DE LA FUNCION MOSTRAR Doctor
+
+
+void ListadoDoctores(const tListaDoc &listadoc){
+
+  for (int i = 0; i < listadoc.contadorDoc; i++)
+  {
+      cout << setw(3) << right << i + 1 << ": ";
+      MostrarDoctor(listadoc.elementosDoc[i]);
+  }
+
+
+
+}///FIN DE LA FUNCIÓN LISTADO DOCTORES
