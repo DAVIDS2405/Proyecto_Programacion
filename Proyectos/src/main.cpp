@@ -6,7 +6,6 @@ using namespace std;
 int MenuPrincipal();
 int main(){
     tLista lista;
-    
     tPacientes pacientes;
     string CedulaBuscar;
     bool ok;

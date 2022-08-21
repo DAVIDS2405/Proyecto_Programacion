@@ -148,6 +148,7 @@ void Ordenamiento_Pac(tLista lista){
         }
     }
     cout << "Lista ordenada por nombres: " << endl;
+    Listado_Pac(lista);
 }
 //BUSCAR 
 void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok){
