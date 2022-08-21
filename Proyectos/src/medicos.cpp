@@ -181,7 +181,9 @@ void Buscar_Doctores(tListaDoc &lista, string CedulaBuscar, bool &ok)
             cout << "Nombre: " << NombreCompleto(lista.elementosDoc[i]) << endl;
             cout << "Edad: " << listaBus.elementosDoc[i].edadMED << endl;
             cout << "Cedula: " << listaBus.elementosDoc[i].cedula << endl;
-
+        }
+    }
+}
 void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
 {
     tListaDoc listaBus = listadoc;
@@ -195,9 +197,9 @@ void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
             okdoc = true;
             cout << "Nombre: " << NombreCompleto(listadoc.elementosDoc[i]) << endl;
             cout << "Edad: " << listaBus.elementosDoc[i].edadMED << endl;
-            cout << "Cedula: " << listaBus.elementosDocs[i].cedula << endl;
+            cout << "Cedula: " << listaBus.elementosDoc[i].cedula << endl;
 
-                }
+        }
         i++;
     }
 
