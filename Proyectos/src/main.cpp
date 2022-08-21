@@ -6,8 +6,11 @@ using namespace std;
 int MenuPrincipal();
 int main(){
     tLista lista;
+    
     tPacientes pacientes;
+    string CedulaBuscar;
     bool ok;
+    int pos;
     int opcionMenuPrincipal = MenuPrincipal();
     while(opcionMenuPrincipal != 4){
         switch(opcionMenuPrincipal){
@@ -29,27 +32,45 @@ int main(){
                         {
                             case 1:
                             {
+                                Leer_Pac(pacientes);
                                 Insertar_Pac(lista, pacientes,ok);
+
                             }
                             break;
                             case 2:
-                            {
+                            {   cout <<"Que paciente desea eliminar: ";
+                                cin >> pos;
+                                Eliminar_Pac(lista, pos, ok);
+                                if (!ok)
+                                {
+                                    cout << "El paciente no existe!" << endl;
+                                }
                             }
                             break;
                             case 3:
                             {
+                                Ordenamiento_Pac(lista);
                             }
                             break;
                             case 4:
                             {
+                                cout <<"ingrese la cedula a buscar: ";
+                                getline(cin,CedulaBuscar);
+                                Buscar_Pac(lista,CedulaBuscar, ok);
                             }
                             break;
                             case 5:
                             {
                             }
+                            break;
+                            case 6:
+                            {
+                                Listado_Pac(lista);
+                            }
                         }
                     }
                 }
+                Guardar_Pac(lista);
                 
             }
             break;

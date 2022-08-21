@@ -8,7 +8,7 @@ using namespace std;
 
 int Menu_Pac(){
     int op = 0;
-    while ((op < 1) || (op > 6))
+    while ((op < 1) || (op > 7))
     {
         cout << setw(41) << " --------------------------------------------" << endl;
         cout << "|" << setw(30) << "Menu Pacientes" << setw(15) << "|" << endl;
@@ -17,12 +17,13 @@ int Menu_Pac(){
         cout << "|" << setw(25) << "3 - Ordenar los pacientes" << setw(20) << "|" << endl;
         cout << "|" << setw(23) << "4 - Consultar pacientes" << setw(22) << "|" << endl;
         cout << "|" << setw(23) << "5 - Modificar pacientes" << setw(22) << "|" << endl;
-        cout << "|" << setw(23) << "6 - Salir del menu pacientes" << setw(22) << "|" << endl;
+        cout << "|" << setw(23) << "6 - Mostrar pacientes" << setw(22) << "|" << endl;
+        cout << "|" << setw(23) << "7 - Salir del menu pacientes" << setw(22) << "|" << endl;
         cout << setw(41) << " --------------------------------------------" << endl;
         cout << setw(10) << " Ingrese la opcion deseada: ";
         cin >> op;
         cin.ignore();
-        if ((op < 1) || (op > 6))
+        if ((op < 1) || (op > 7))
         {
             cout << "Opcion no valida ingresar un numero valido" << endl;
         }
@@ -132,22 +133,21 @@ void Listado_Pac(tLista lista){
     }
 }
 //ORDENAR 
-void Ordenamiento_Pac(int ordenamiento[], int n){
-    int max{0}, min{0}, aux{0}, i{0}, j{0};
-    for (i = 0; i < n; i++)
+void Ordenamiento_Pac(tLista lista){
+    tLista listaOrd = lista;
+    for (int i = 1; i < listaOrd.contador; i++)
     {
-        min = i;
-        for (j = i + 1; j < n; j++)
+        int pos = i;
+        while ((pos > 0) && (listaOrd.elementos[pos - 1].nombrePAC > listaOrd.elementos[pos].nombrePAC))
         {
-            if (ordenamiento[j] < ordenamiento[min])
-            {
-                min = j;
-            }
+            tPacientes aux;
+            aux = listaOrd.elementos[pos];
+            listaOrd.elementos[pos] = listaOrd.elementos[pos - 1];
+            listaOrd.elementos[pos - 1] = aux;
+            pos--;
         }
-        aux = ordenamiento[i];
-        ordenamiento[i] = ordenamiento[min];
-        ordenamiento[min] = aux;
     }
+    cout << "Lista ordenada por nombres: " << endl;
 }
 //BUSCAR 
 void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok){
