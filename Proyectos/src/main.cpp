@@ -28,7 +28,7 @@ int main(){
                 else{
 
                     int opcionPacientes = Menu_Pac();
-                    while (opcionPacientes != 6)
+                    while (opcionPacientes != 7)
                     {
                         switch (opcionPacientes)
                         {
@@ -72,8 +72,10 @@ int main(){
                             {
                                 Listado_Pac(lista);
                             }
+                            break;
                         }
                     }
+                    opcionPacientes = Menu_Pac();
                 }
                 Guardar_Pac(lista);
                 
@@ -84,6 +86,7 @@ int main(){
             }
             break;
         }
+        opcionMenuPrincipal = MenuPrincipal();
     }
 
     return 0;
