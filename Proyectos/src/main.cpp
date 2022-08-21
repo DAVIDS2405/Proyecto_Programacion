@@ -5,6 +5,9 @@
 using namespace std;
 int MenuPrincipal();
 int main(){
+    tLista lista;
+    tPacientes pacientes;
+    bool ok;
     int opcionMenuPrincipal = MenuPrincipal();
     while(opcionMenuPrincipal != 4){
         switch(opcionMenuPrincipal){
@@ -13,7 +16,41 @@ int main(){
             }
             break;
             case 2:{
-                Menu_Pac();
+                Cargar_Pac(lista, ok);
+                if (!ok){
+
+                }
+                else{
+
+                    int opcionPacientes = Menu_Pac();
+                    while (opcionPacientes != 6)
+                    {
+                        switch (opcionPacientes)
+                        {
+                            case 1:
+                            {
+                                Insertar_Pac(lista, pacientes,ok);
+                            }
+                            break;
+                            case 2:
+                            {
+                            }
+                            break;
+                            case 3:
+                            {
+                            }
+                            break;
+                            case 4:
+                            {
+                            }
+                            break;
+                            case 5:
+                            {
+                            }
+                        }
+                    }
+                }
+                
             }
             break;
             case 3:{
