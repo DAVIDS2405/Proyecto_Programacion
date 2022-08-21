@@ -166,25 +166,25 @@ void MostrarDoctor(tDoctores doctor)
 }
 
 // BUSCAR
-void Buscar_Doctores(tLista &lista, string CedulaBuscar, bool &ok)
+void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
 {
-    tLista listaBus = lista;
-    ok = false;
+    tListaDoc listaBus = listadoc;
+    okdoc = false;
     int i = 0;
 
-    while ((ok == false) && (i < lista.contador))
+    while ((okdoc == false) && (i < listadoc.contadorDoc))
     {
-        if (lista.elementos[i].cedulaMED == CedulaBuscar)
+        if (listadoc.elementosDoc[i].cedula == CedulaBuscar)
         {
-            ok = true;
-            cout << "Nombre: " << NombreCompleto(lista.elementos[i]) << endl;
-            cout << "Edad: " << listaBus.elementos[i].edadPAC << endl;
-            cout << "Cedula: " << listaBus.elementos[i].cedulaPAC << endl;
+            okdoc = true;
+            cout << "Nombre: " << NombreCompleto(listadoc.elementosDoc[i]) << endl;
+            cout << "Edad: " << listaBus.elementosDoc[i].edadMED << endl;
+            cout << "Cedula: " << listaBus.elementosDocs[i].cedula << endl;
                 }
         i++;
     }
 
-    if (ok == false)
+    if (okdoc == false)
     {
         cout << "La cedula ingresada no corresponde a ningun medico" << endl;
     }
