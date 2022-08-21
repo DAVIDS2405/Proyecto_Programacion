@@ -33,7 +33,10 @@ int main(){
                             {
                                 Leer_Pac(pacientes);
                                 Insertar_Pac(lista, pacientes,ok);
-
+                                if (!ok)
+                                {
+                                    cout << "Lista llena: imposible insertar" << endl;
+                                }
                             }
                             break;
                             case 2:
