@@ -26,4 +26,4 @@ string NombreCompleto(tDoctores doctor);
 void MostrarDoctor(tDoctores doctor);
 void ListadoDoctores(const tListaDoc &listadoc);
 void OrdenarDoctores(tListaDoc &listadoc);
-void Buscar_Doctores(tLista &lista, string CedulaBuscar, bool &ok);
+void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc);
