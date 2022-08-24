@@ -5,7 +5,7 @@ const int MAX_DOCS = 30;
 typedef struct{
     string nombreMED;
     string apellidoMED;
-    string edadMED;
+    int edadMED;
     string especialidad;
     string cedula;
 }tDoctores;

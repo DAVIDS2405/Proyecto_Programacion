@@ -7,27 +7,28 @@ using namespace std;
 
 int MenuDoctores(){
 
-    int opcion;
-    cout <<"\t\tMen"<<char(163)<<endl;
-    cout <<"1) Agregar Doctor"<<endl;
-    cout <<"2) Eliminar Doctor"<<endl;
-    cout <<"3) Listar Doctores"<<endl;
-    cout <<"4) Modificar Doctor"<<endl;
-    cout <<"5) Regresar al men"<<char(163)<<" principal"<<endl;
-    cout <<">";
-    cin >> opcion;
-
-    cout <<endl<<endl;
-    while( opcion < 1 || opcion > 5){
-        cout <<"La opci"<<char(162)<<"n ingresada no existe, int"<<char(130)<<"ntelo de nuevo"<<endl;
-        cout <<">";
-        cin >> opcion;
-
-        cout <<endl<<endl;
+    int op = 0;
+    while ((op < 1) || (op > 7))
+    {
+        cout << setw(41) << " --------------------------------------------" << endl;
+        cout << "|" << setw(30) << "Menu Doctores" << setw(15) << "|" << endl;
+        cout << "|" << setw(41) << "1 - Agregar un nuevo doctor" << setw(4) << "|" << endl;
+        cout << "|" << setw(36) << "2 - Eliminar un doctor" << setw(9) << "|" << endl;
+        cout << "|" << setw(37) << "3 - Ordenar los doctores" << setw(8) << "|" << endl;
+        cout << "|" << setw(35) << "4 - Consultar doctores" << setw(10) << "|" << endl;
+        cout << "|" << setw(35) << "5 - Modificar doctor" << setw(10) << "|" << endl;
+        cout << "|" << setw(33) << "6 - Mostrar doctor" << setw(12) << "|" << endl;
+        cout << "|" << setw(40) << "7 - Salir del menu pacientes" << setw(5) << "|" << endl;
+        cout << setw(41) << " --------------------------------------------" << endl;
+        cout << setw(10) << " Ingrese la opcion deseada: ";
+        cin >> op;
+        cin.ignore();
+        if ((op < 1) || (op > 7))
+        {
+            cout << "Opcion no valida ingresar un numero valido" << endl;
+        }
     }
-
-
-    return opcion;
+    return op;
 }/// FIN DE LA FUNCIÓN MENU DE DOCTORES
 
 
@@ -45,23 +46,22 @@ void CargarDoctores(tListaDoc &listadoc, bool &okdoc){
     }else{
         okdoc = true;
 
-        archivo_lec >> doctor.cedula;
+        getline(archivo_lec, doctor.cedula);
         doctor.cedula = doctor.cedula.substr(0,10);
 
-          while( (doctor.cedula != "-1")&&(listadoc.contadorDoc < MAX_DOCS)  ){
+          while( (doctor.cedula != "XXX")&&(listadoc.contadorDoc < MAX_DOCS)  ){
 
               archivo_lec.get(aux);
               getline(archivo_lec, doctor.nombreMED);
               getline(archivo_lec, doctor.apellidoMED);
               archivo_lec >> doctor.edadMED;
-              archivo_lec.get(aux);
               getline(archivo_lec, doctor.especialidad);
-
+              archivo_lec.get(aux);
               listadoc.elementosDoc[listadoc.contadorDoc] = doctor;
               listadoc.contadorDoc++;
-
-              archivo_lec >> doctor.cedula;
+              getline(archivo_lec, doctor.cedula);
               doctor.cedula = doctor.cedula.substr(0,10);
+
           }
 
 
@@ -90,7 +90,7 @@ void GuardarDoctores(const tListaDoc &listadoc){
 
     }
 
-    archivo_esc<<"-1"<<endl;
+    archivo_esc<<"XXX"<<endl;
     archivo_esc.close();
 
 }///FIN DE LA FUNCION GUARDAR DOCTORES
@@ -100,7 +100,7 @@ void LeerDoctor(tDoctores &doctores){
 
     cin.ignore();
     cout <<"Ingrese la cedula del doctor: ";
-    cin >> doctores.cedula;
+    getline(cin, doctores.cedula);
 
     cout <<"Ingrese el nombre del doctor: ";
     getline(cin, doctores.nombreMED);
@@ -161,9 +161,10 @@ string NombreCompleto(tDoctores doctor)
 }
 void MostrarDoctor(tDoctores doctor)
 {
-    cout << "Nombre del paciente " << NombreCompleto(doctor) << endl;
-    cout << "Edad del paciente " << doctor.edadMED << endl;
+    cout << "Nombre del doctor " << NombreCompleto(doctor) << endl;
+    cout << "Edad del doctor " << doctor.edadMED << endl;
     cout << "Cedual del paciente" << doctor.cedula << endl;
+    cout << "Especialidad "<< doctor.especialidad<<endl;
 }
 
 // BUSCAR
@@ -186,23 +187,23 @@ void Buscar_Doctores(tListaDoc &lista, string CedulaBuscar, bool &ok)
     }
 }
 //ORDENAR
-void Ordenamiento_Doctores(int ordenamiento[], int n)
+void Ordenamiento_Doctores(tListaDoc lista)
 {
-     int max{0}, min{0}, aux{0}, i{0}, j{0};
-    for (i = 0; i < n; i++)
+    tListaDoc listaOrd = lista;
+    for (int i = 1; i < listaOrd.contadorDoc; i++)
     {
-        min = i;
-        for (j = i + 1; j < n; j++)
+        int pos = i;
+        while ((pos > 0) && (listaOrd.elementosDoc[pos - 1].cedula > listaOrd.elementosDoc[pos].cedula))
         {
-            if (ordenamiento[j] < ordenamiento[min])
-            {
-                min = j;
-            }
+            tDoctores aux;
+            aux = listaOrd.elementosDoc[pos];
+            listaOrd.elementosDoc[pos] = listaOrd.elementosDoc[pos - 1];
+            listaOrd.elementosDoc[pos - 1] = aux;
+            pos--;
         }
-        aux = ordenamiento[i];
-        ordenamiento[i] = ordenamiento[min];
-        ordenamiento[min] = aux;
     }
+    cout << "Lista ordenada por nombres: " << endl;
+    ListadoDoctores(listaOrd);
 }
 //BUSCAR
 void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
