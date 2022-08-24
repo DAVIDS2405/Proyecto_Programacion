@@ -95,7 +95,7 @@ int main(){
                             case 2:
                             {   cout <<"Que paciente desea eliminar: ";
                                 cin >> pos;
-                                Eliminar_Pac(lista, pos, ok);
+                                Eliminar_Pac(lista, pos-1, ok);
                                 if (!ok)
                                 {
                                     cout << "El paciente no existe!" << endl;
