@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <string>
 #include "pacientes.h"
+#include "medicos.h"
 using namespace std;
 int MenuPrincipal();
 
@@ -10,6 +11,8 @@ int MenuPrincipal();
 int main(){
     tLista lista;
     tPacientes pacientes;
+    tListaDoc listaDoc;
+    tDoctores doctores;
     string CedulaBuscar;
     bool ok;
     int pos;
@@ -17,13 +20,58 @@ int main(){
     while(opcionMenuPrincipal != 4){
         switch(opcionMenuPrincipal){
             case 1:{
-
+                CargarDoctores(listaDoc,ok);
+                if (!ok)
+                {
+                    cout <<"no se pudo cargar el archivo"<<endl;
+                }
+                else{
+                    int opcionDoctores = MenuDoctores();
+                    while(opcionDoctores != 7){
+                        switch(opcionDoctores){
+                            case 1:{
+                                LeerDoctor(doctores);
+                                InsertarDoctor(listaDoc, doctores,ok);
+                            }
+                            break;
+                            case 2:
+                            {   
+                                cout <<"Que doctor desea eliminar"<<endl;
+                                cin >> pos;
+                                EliminarDoctor(listaDoc, pos,ok);
+                            }
+                            break;
+                            case 3:
+                            {
+                                Ordenamiento_Doctores(listaDoc);
+                            }
+                            break;
+                            case 4:
+                            {
+                                cout << "ingrese la cedula a buscar: ";
+                                getline(cin, CedulaBuscar);
+                                Buscar_Doctores(listaDoc, CedulaBuscar, ok);
+                            }
+                            break;
+                            case 5:
+                            {
+                            }
+                            break;
+                            case 6:
+                            {
+                                ListadoDoctores(listaDoc);
+                            }
+                        }
+                        opcionDoctores = MenuDoctores();
+                    }
+                }
+                GuardarDoctores(listaDoc);
             }
             break;
             case 2:{
                 Cargar_Pac(lista, ok);
                 if (!ok){
-
+                    cout << "no se pudo cargar el archivo" << endl;
                 }
                 else{
 

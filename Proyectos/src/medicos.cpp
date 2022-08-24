@@ -243,7 +243,7 @@ void MostrarDoctor(tDoctores doctor){
 }///FIN DE LA FUNCION MOSTRAR Doctor
 
 
-void ListadoDoctores(const tListaDoc &listadoc){
+void ListadoDoctores(const tListaDoc listadoc){
 
   for (int i = 0; i < listadoc.contadorDoc; i++)
   {

@@ -24,8 +24,7 @@ void InsertarDoctor(tListaDoc &listadoc, tDoctores doctor, bool &okdoc);
 void EliminarDoctor(tListaDoc &listadoc, int pos, bool &okdoc);
 string NombreCompleto(tDoctores doctor);
 void MostrarDoctor(tDoctores doctor);
-void ListadoDoctores(const tListaDoc &listadoc);
-void Ordenamiento_Doctores(int ordenamiento[], int n);
-
+void ListadoDoctores(const tListaDoc listadoc);
+void Ordenamiento_Doctores(tListaDoc lista);
 void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc);
 
