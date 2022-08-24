@@ -14,15 +14,16 @@ int MenuDoctores(){
         cout << "|" << setw(30) << "Menu Doctores" << setw(15) << "|" << endl;
         cout << "|" << setw(41) << "1 - Agregar un nuevo doctor" << setw(4) << "|" << endl;
         cout << "|" << setw(36) << "2 - Eliminar un doctor" << setw(9) << "|" << endl;
-        cout << "|" << setw(37) << "3 - Ordenar los doctores" << setw(8) << "|" << endl;
-        cout << "|" << setw(35) << "4 - Consultar doctores" << setw(10) << "|" << endl;
-        cout << "|" << setw(35) << "5 - Modificar doctor" << setw(10) << "|" << endl;
-        cout << "|" << setw(33) << "6 - Mostrar doctor" << setw(12) << "|" << endl;
-        cout << "|" << setw(40) << "7 - Salir del menu pacientes" << setw(5) << "|" << endl;
+        cout << "|" << setw(38) << "3 - Ordenar los doctores" << setw(7) << "|" << endl;
+        cout << "|" << setw(36) << "4 - Consultar doctores" << setw(9) << "|" << endl;
+        cout << "|" << setw(34) << "5 - Modificar doctor" << setw(11) << "|" << endl;
+        cout << "|" << setw(32) << "6 - Mostrar doctor" << setw(13) << "|" << endl;
+        cout << "|" << setw(42) << "7 - Salir del menu pacientes" << setw(3) << "|" << endl;
         cout << setw(41) << " --------------------------------------------" << endl;
         cout << setw(10) << " Ingrese la opcion deseada: ";
         cin >> op;
         cin.ignore();
+        cout <<endl;
         if ((op < 1) || (op > 7))
         {
             cout << "Opcion no valida ingresar un numero valido" << endl;
@@ -51,12 +52,11 @@ void CargarDoctores(tListaDoc &listadoc, bool &okdoc){
 
           while( (doctor.cedula != "XXX")&&(listadoc.contadorDoc < MAX_DOCS)  ){
 
-              archivo_lec.get(aux);
               getline(archivo_lec, doctor.nombreMED);
               getline(archivo_lec, doctor.apellidoMED);
               archivo_lec >> doctor.edadMED;
-              getline(archivo_lec, doctor.especialidad);
               archivo_lec.get(aux);
+              getline(archivo_lec, doctor.especialidad);
               listadoc.elementosDoc[listadoc.contadorDoc] = doctor;
               listadoc.contadorDoc++;
               getline(archivo_lec, doctor.cedula);
@@ -98,23 +98,17 @@ void GuardarDoctores(const tListaDoc &listadoc){
 
 void LeerDoctor(tDoctores &doctores){
 
-    cin.ignore();
+    cin.sync();
     cout <<"Ingrese la cedula del doctor: ";
     getline(cin, doctores.cedula);
-
     cout <<"Ingrese el nombre del doctor: ";
     getline(cin, doctores.nombreMED);
-
     cout <<"Ingrese el apellido del doctor: ";
     getline(cin, doctores.apellidoMED);
-
-    cout <<"Ingrese la edad del doctor: ";
-    cin >> doctores.edadMED;
-
-    cin.ignore();
     cout <<"Ingrese la especialidad del doctor: ";
     getline(cin, doctores.especialidad);
-
+    cout << "Ingrese la edad del doctor: ";
+    cin >> doctores.edadMED;
     cin.sync();
 }///FIN DE LA FUNCIÓN LEER DOCTOR
 
@@ -137,6 +131,7 @@ void InsertarDoctor(tListaDoc &listadoc, tDoctores doctor, bool &okdoc){
 
 void EliminarDoctor(tListaDoc &listadoc, int pos, bool &okdoc){
 
+    cout <<endl;
     if( pos < 0 || pos > listadoc.contadorDoc-1 ){
         okdoc = false;
 
@@ -159,33 +154,8 @@ string NombreCompleto(tDoctores doctor)
 {
      return doctor.nombreMED + " " + doctor.apellidoMED;
 }
-void MostrarDoctor(tDoctores doctor)
-{
-    cout << "Nombre del doctor " << NombreCompleto(doctor) << endl;
-    cout << "Edad del doctor " << doctor.edadMED << endl;
-    cout << "Cedual del paciente" << doctor.cedula << endl;
-    cout << "Especialidad "<< doctor.especialidad<<endl;
-}
 
-// BUSCAR
 
-void Buscar_Doctores(tListaDoc &lista, string CedulaBuscar, bool &ok)
-{
-    tListaDoc listaBus = lista;
-    ok = false;
-    int i = 0;
-
-    while ((ok == false) && (i < lista.contadorDoc))
-    {
-        if (lista.elementosDoc[i].cedula == CedulaBuscar)
-        {
-            ok = true;
-            cout << "Nombre: " << NombreCompleto(lista.elementosDoc[i]) << endl;
-            cout << "Edad: " << listaBus.elementosDoc[i].edadMED << endl;
-            cout << "Cedula: " << listaBus.elementosDoc[i].cedula << endl;
-        }
-    }
-}
 //ORDENAR
 void Ordenamiento_Doctores(tListaDoc lista)
 {
@@ -202,7 +172,7 @@ void Ordenamiento_Doctores(tListaDoc lista)
             pos--;
         }
     }
-    cout << "Lista ordenada por nombres: " << endl;
+    cout << "Lista ordenada por cedula: " << endl;
     ListadoDoctores(listaOrd);
 }
 //BUSCAR
@@ -217,9 +187,11 @@ void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
         if (listadoc.elementosDoc[i].cedula == CedulaBuscar)
         {
             okdoc = true;
+            cout <<"Datos del doctor"<<endl;
             cout << "Nombre: " << NombreCompleto(listadoc.elementosDoc[i]) << endl;
             cout << "Edad: " << listaBus.elementosDoc[i].edadMED << endl;
             cout << "Cedula: " << listaBus.elementosDoc[i].cedula << endl;
+            cout << "Especialidad: "<<listaBus.elementosDoc[i].especialidad<<endl;
 
         }
         i++;
@@ -231,19 +203,19 @@ void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
     }
 }
 
-
 void MostrarDoctor(tDoctores doctor){
 
 
       cout << "Nombre del doctor: " << NombreCompleto(doctor) << endl;
-      cout << "Edad del doctor: " << doctor.edadMED << endl;
-      cout << "Cedula del doctor: " << doctor.cedula << endl;
-      cout << "Especialidad del doctor: "<< doctor.especialidad<<endl;
+      cout << "   Edad del doctor: " << doctor.edadMED << endl;
+      cout << "   Cedula del doctor: " << doctor.cedula << endl;
+      cout << "   Especialidad del doctor: "<< doctor.especialidad<<endl;
+      cout <<endl;
 
 }///FIN DE LA FUNCION MOSTRAR Doctor
 
 
-void ListadoDoctores(const tListaDoc listadoc){
+void ListadoDoctores(tListaDoc listadoc){
 
   for (int i = 0; i < listadoc.contadorDoc; i++)
   {

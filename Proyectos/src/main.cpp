@@ -35,10 +35,12 @@ int main(){
                             }
                             break;
                             case 2:
-                            {   
+                            {    
+                                ListadoDoctores(listaDoc);
+                                cout <<endl;
                                 cout <<"Que doctor desea eliminar"<<endl;
                                 cin >> pos;
-                                EliminarDoctor(listaDoc, pos,ok);
+                                EliminarDoctor(listaDoc, pos-1,ok);
                             }
                             break;
                             case 3:
