@@ -27,4 +27,5 @@ void MostrarDoctor(tDoctores doctor);
 void ListadoDoctores(tListaDoc listadoc);
 void Ordenamiento_Doctores(tListaDoc lista);
 void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc);
+void ModificarDoctores(tListaDoc &listadoc, string CedulaBuscar);
 
