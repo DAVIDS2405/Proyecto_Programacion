@@ -193,3 +193,28 @@ void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok)
         cout << "La cedula ingresada no corresponde a ningun paciente" << endl;
     }
 }
+//MODIFICAR
+void ModificarPac(tLista &lista, string CedulaBuscar)
+{
+    bool encontradoPA = false;
+    int indice = 0;
+    for(int i = 0; i < lista.contador && encontradoPA == false; i++){
+
+        if(lista.elementos[i].cedulaPAC == CedulaBuscar){
+           indice = i;
+           encontradoPA = true;
+
+        }else{
+          indice++;
+        }
+
+    }
+
+
+    if(encontradoPA){
+        cout <<"Ingrese los nuevos datos para el paciente"<<endl;
+        Leer_Pac(lista.elementos[indice]);
+    }
+
+
+}
