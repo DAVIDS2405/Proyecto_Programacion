@@ -124,7 +124,7 @@ int main(){
                             {
                                 //modificar
                                 string cedula_aux;
-                                cout <<"ced >";
+                                cout <<"cedula del medico a modificar: ";
                                 cin >> cedula_aux;
                                 cout <<endl;
                                 ModificarPac(lista, cedula_aux);
