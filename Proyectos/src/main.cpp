@@ -57,6 +57,12 @@ int main(){
                             break;
                             case 5:
                             {
+                                //modificar
+                                string cedula_aux;
+                                cout <<"ced >";
+                                cin >> cedula_aux;
+                                cout <<endl;
+                                ModificarDoctores(listaDoc, cedula_aux);
                             }
                             break;
                             case 6:
@@ -116,6 +122,12 @@ int main(){
                             break;
                             case 5:
                             {
+                                //modificar
+                                string cedula_aux;
+                                cout <<"ced >";
+                                cin >> cedula_aux;
+                                cout <<endl;
+                                ModificarPac(lista, cedula_aux);
                             }
                             break;
                             case 6:
