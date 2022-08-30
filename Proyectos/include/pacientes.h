@@ -26,6 +26,6 @@ void Eliminar_Pac(tLista &lista, int pos, bool &ok);
 string NombreCompleto(tPacientes pacientes);
 void Mostrar_Pac(tPacientes pacientes);
 void Listado_Pac(tLista lista);
-void Ordenamiento_Pac(tLista lista);
+void Ordenamiento_Pac(tLista &lista);
 void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok);
 void ModificarPac(tLista &lista, string CedulaBuscar);

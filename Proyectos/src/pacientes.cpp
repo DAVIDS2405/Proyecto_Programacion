@@ -151,23 +151,25 @@ void Listado_Pac(tLista lista)
     }
 }
 // ORDENAR
-void Ordenamiento_Pac(tLista lista)
+void Ordenamiento_Pac(tLista &lista)
 {
-    tLista listaOrd = lista;
-    for (int i = 1; i < listaOrd.contador; i++)
+   
+    for (int i = 1; i < lista.contador; i++)
     {
         int pos = i;
-        while ((pos > 0) && (listaOrd.elementos[pos - 1].cedulaPAC > listaOrd.elementos[pos].cedulaPAC))
+        while ((pos > 0) && (lista.elementos[pos - 1].cedulaPAC > lista.elementos[pos].cedulaPAC))
         {
             tPacientes aux;
-            aux = listaOrd.elementos[pos];
-            listaOrd.elementos[pos] = listaOrd.elementos[pos - 1];
-            listaOrd.elementos[pos - 1] = aux;
+            aux = lista.elementos[pos];
+            lista.elementos[pos] = lista.elementos[pos - 1];
+            lista.elementos[pos - 1] = aux;
             pos--;
         }
     }
-    cout << "Lista ordenada por nombres: " << endl;
-    Listado_Pac(listaOrd);
+    cout << "Lista ordenada por cedula: " << endl;
+    Listado_Pac(lista);
+    Guardar_Pac(lista);
+
 }
 // BUSCAR
 void Buscar_Pac(tLista &lista, string CedulaBuscar, bool &ok)

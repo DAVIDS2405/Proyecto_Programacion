@@ -157,23 +157,23 @@ string NombreCompleto(tDoctores doctor)
 
 
 //ORDENAR
-void Ordenamiento_Doctores(tListaDoc lista)
+void Ordenamiento_Doctores(tListaDoc &lista)
 {
-    tListaDoc listaOrd = lista;
-    for (int i = 1; i < listaOrd.contadorDoc; i++)
+    for (int i = 1; i < lista.contadorDoc; i++)
     {
         int pos = i;
-        while ((pos > 0) && (listaOrd.elementosDoc[pos - 1].cedula > listaOrd.elementosDoc[pos].cedula))
+        while ((pos > 0) && (lista.elementosDoc[pos - 1].cedula > lista.elementosDoc[pos].cedula))
         {
             tDoctores aux;
-            aux = listaOrd.elementosDoc[pos];
-            listaOrd.elementosDoc[pos] = listaOrd.elementosDoc[pos - 1];
-            listaOrd.elementosDoc[pos - 1] = aux;
+            aux = lista.elementosDoc[pos];
+            lista.elementosDoc[pos] = lista.elementosDoc[pos - 1];
+            lista.elementosDoc[pos - 1] = aux;
             pos--;
         }
     }
     cout << "Lista ordenada por cedula: " << endl;
-    ListadoDoctores(listaOrd);
+    ListadoDoctores(lista);
+    GuardarDoctores(lista);
 }
 //BUSCAR
 void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
