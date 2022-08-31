@@ -1,3 +1,6 @@
+#ifndef pacientes_h
+#define pacientes_h
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -220,3 +223,4 @@ void ModificarPac(tLista &lista, string CedulaBuscar)
 
 
 }
+#endif

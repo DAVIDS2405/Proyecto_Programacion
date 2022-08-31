@@ -1,3 +1,6 @@
+#ifndef Medicos_h
+#define Medicos_h
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -251,35 +254,4 @@ void ModificarDoctores(tListaDoc &listadoc, string CedulaBuscar){
 
 }//FIN DE LA FUNCIÓN MODIFICAR DOCTORES
 
-//OTRA FORMA DE ORDENAR 
-/*void OrdenarDoctores(tListaDoc &listadoc){
-    string aux_nom, aux_ape, aux_edad, aux_espec, aux_ced;
-
-    for(int i = 0; i < listadoc.contadorDoc; i++){
-        for(int j = i+1; j < listadoc.contadorDoc; j++){
-
-            if( listadoc.elementosDoc[j].cedula > listadoc.elementosDoc[i].cedula ){
-
-                aux_nom = listadoc.elementosDoc[i].nombreMED;
-                listadoc.elementosDoc[i].nombreMED = listadoc.elementosDoc[j].nombreMED;
-                listadoc.elementosDoc[j].nombreMED = aux_nom;
-
-                aux_ape = listadoc.elementosDoc[i].apellidoMED;
-                listadoc.elementosDoc[i].apellidoMED = listadoc.elementosDoc[j].apellidoMED;
-                listadoc.elementosDoc[j].apellidoMED = aux_ape;
-
-                aux_edad = listadoc.elementosDoc[i].edadMED;
-                listadoc.elementosDoc[i].edadMED = listadoc.elementosDoc[j].edadMED;
-                listadoc.elementosDoc[j].edadMED = aux_edad;
-
-                aux_espec = listadoc.elementosDoc[i].especialidad;
-                listadoc.elementosDoc[i].especialidad = listadoc.elementosDoc[j].especialidad;
-                listadoc.elementosDoc[j].especialidad = aux_espec;
-
-                aux_ced = listadoc.elementosDoc[i].cedula;
-                listadoc.elementosDoc[i].cedula = listadoc.elementosDoc[j].cedula;
-                listadoc.elementosDoc[j].cedula = aux_ced;
-            }
-        }
-    }
-    */
+#endif

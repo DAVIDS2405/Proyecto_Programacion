@@ -3,6 +3,7 @@
 #include <string>
 #include "pacientes.h"
 #include "medicos.h"
+#include "citas.h"
 using namespace std;
 int MenuPrincipal();
 
@@ -14,8 +15,11 @@ int main(){
     tListaDoc listaDoc;
     tDoctores doctores;
     string CedulaBuscar;
+    tCita cita;
+    tListaC listacitas;
     bool ok;
     int pos;
+    int codigo_buscar = 0;
     int opcionMenuPrincipal = MenuPrincipal();
     while(opcionMenuPrincipal != 4){
         switch(opcionMenuPrincipal){
@@ -57,6 +61,7 @@ int main(){
                             break;
                             case 5:
                             {
+                                ListadoDoctores(listaDoc);
                                 //modificar
                                 string cedula_aux;
                                 cout <<"cededula del medico a modificar: ";
@@ -99,7 +104,9 @@ int main(){
                             }
                             break;
                             case 2:
-                            {   cout <<"Que paciente desea eliminar: ";
+
+                            {
+                                cout <<"Que paciente desea eliminar: ";
                                 cin >> pos;
                                 Eliminar_Pac(lista, pos-1, ok);
                                 if (!ok)
@@ -123,6 +130,7 @@ int main(){
                             case 5:
                             {
                                 //modificar
+                                Listado_Pac(lista);
                                 string cedula_aux;
                                 cout <<"cedula del paciente a modificar: ";
                                 cin >> cedula_aux;
@@ -145,19 +153,77 @@ int main(){
             }
             break;
             case 3:{
-                
 
-            }
-            break;
-        }
-        opcionMenuPrincipal = MenuPrincipal();
-    }
+                Cargar_citas(listacitas);
+                CargarDoctores(listaDoc, ok);
+                Cargar_Pac(lista, ok);
 
-    return 0;
+                int opmenucitas = Menucitas();
+                while (opmenucitas != 7)
+                {
+                    switch (opmenucitas)
+                    {
+                        case 1:
+                        {
+                            Listado_Pac(lista);
+                            ListadoDoctores(listaDoc);
+
+                            Leer_citas(cita);
+                            Insertar_cita(listacitas,cita,ok);
+                        }
+                        break;
+                        case 2:
+                        {
+                            ListadoCitas(listacitas);
+                            cout << "Ingrese la posicion a elimar de la cita ";
+                            cin >> codigo_buscar;
+                            Eliminar_cita(listacitas,codigo_buscar,ok);
+                            if (!ok)
+                            {
+                                cout << "El paciente no existe!" << endl;
+                            }
+                        }
+                        break;
+                        case 3:
+                        {
+                            Ordenar_cita(listacitas);
+                        }
+                        break;
+                        case 4:
+                        {
+                            
+                            cout <<"Ingrese el codigo a buscar de la cita: ";
+                            cin >> codigo_buscar;
+                            Buscar_cita(listacitas,codigo_buscar,ok);
+            
+                        }
+                        break;
+                        case 5:
+                        {
+                            ListadoCitas(listacitas);
+                            cout << "ingrese el codigo de la cita a modificar ";
+                            cin >> codigo_buscar;
+                            Modificar_cita(listacitas,codigo_buscar);
+                        }
+                        break;
+                        case 6:
+                        {
+                            ListadoCitas(listacitas);
+                        }
+                    }
+                    opmenucitas = Menucitas();
+                    }
+
+                Guardar_citas(listacitas);
+            }   
+
+        }   
+        opcionMenuPrincipal = MenuPrincipal();   
+   }
+   return 0;
 }
 
-int MenuPrincipal()
-{
+int MenuPrincipal(){
     int op = 0;
     while ((op < 1) || (op > 4))
     {
