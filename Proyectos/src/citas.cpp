@@ -4,6 +4,7 @@
 #include "medicos.h"
 #include "citas.h"
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <iomanip>
 using namespace std;
@@ -89,16 +90,33 @@ void Leer_citas(tCita & Cita){
     cout << "Ingrese el codigo de la cita: ";
     cin >> Cita.codigo_cita;
     cin.sync();
+
     cout << "Ingrese la cedula del doctor: ";
     getline(cin, Cita.cedula);
+
     cout << "Ingrese la cedula del paciente: ";
     getline(cin, Cita.cedulaPAC);
+
     cout << "Ingrese el dia de la cita: ";
     cin >> Cita.dia;
+    while(Cita.dia < 1 || Cita.dia > 31){
+      cout << "Ingrese el dia de la cita: ";
+      cin >> Cita.dia;
+    }
+
     cout << "Ingrese el mes de la cita: ";
     cin >> Cita.mes;
-    cout << "Ingrese el año de la cita: ";
+    while(Cita.mes < 1 || Cita.dia > 12){
+      cout << "Ingrese el mes de la cita: ";
+      cin >> Cita.mes;
+    }
+
+    cout << "Ingrese el anio de la cita: ";
     cin >> Cita.anio;
+    while(Cita.anio < 1){
+      cout << "Ingrese el anio de la cita: ";
+      cin >> Cita.anio;
+    }
     cin.sync();
 }
 void Insertar_cita(tListaC &listacita, tCita cita, bool &funca){
@@ -164,19 +182,21 @@ void Ordenar_cita(tListaC &listacita){
 }
 
 void MostrarCita(tCita cita){
-    cout << "   Codigo de la cita:     " << cita.codigo_cita << endl;
-    cout << "   Cedula del doctor:   " << cita.cedula << endl;
-    cout << "   Cedula del paciente: " << cita.cedulaPAC << endl;
-    cout << "   dia:                 " << cita.dia << endl;
-    cout << "   mes:                 " << cita.mes << endl;
-    cout << "   Año:                 " << cita.anio << endl;
-    cout << endl;
+    cout << "Codigo de la cita:     " << cita.codigo_cita << endl;
+    cout << "Cedula del doctor:   " << cita.cedula << endl;
+    cout << "Cedula del paciente: " << cita.cedulaPAC << endl;
+    cout << "dia:                 " << cita.dia << endl;
+    cout << "mes:                 " << cita.mes << endl;
+    cout << "Anio:                 " << cita.anio << endl;
 }
 void ListadoCitas(tListaC listacita){
+    string linea(50,'-');
     for (int i = 0; i < listacita.contadorCit; i++)
     {
+        cout <<linea<<endl;
         cout << setw(3) << right << i + 1 << ": ";
         MostrarCita(listacita.elementosCitas[i]);
+        cout <<linea<<endl<<endl;
     }
 }
 
