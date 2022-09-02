@@ -6,7 +6,7 @@ typedef struct
 {
     string nombrePAC;
     string apellidoPAC;
-    string edadPAC;
+    int edadPAC;
     string cedulaPAC;
 } tPacientes;
 
