@@ -21,7 +21,7 @@ int MenuDoctores(){
         cout << "|" << setw(36) << "4 - Consultar doctores" << setw(9) << "|" << endl;
         cout << "|" << setw(34) << "5 - Modificar doctor" << setw(11) << "|" << endl;
         cout << "|" << setw(32) << "6 - Mostrar doctor" << setw(13) << "|" << endl;
-        cout << "|" << setw(42) << "7 - Salir del menu pacientes" << setw(3) << "|" << endl;
+        cout << "|" << setw(42) << "7 - Salir del menu doctores" << setw(3) << "|" << endl;
         cout << setw(41) << " --------------------------------------------" << endl;
         cout << setw(10) << " Ingrese la opcion deseada: ";
         cin >> op;
@@ -104,6 +104,14 @@ void LeerDoctor(tDoctores &doctores){
     cin.sync();
     cout <<"Ingrese la cedula del doctor: ";
     getline(cin, doctores.cedula);
+    for(int i = 0; i < doctores.cedula.size(); i++){
+        if(doctores.cedula[i] != '1' && doctores.cedula[i] != '2' &&doctores.cedula[i] != '3' &&doctores.cedula[i] != '4'
+        &&doctores.cedula[i] != '5' &&doctores.cedula[i] != '6' &&doctores.cedula[i] != '7'
+        &&doctores.cedula[i] != '8' &&doctores.cedula[i] != '9' &&doctores.cedula[i] != '0' ){
+          cout <<"Ingrese la cedula del doctor: ";
+          getline(cin, doctores.cedula);
+        }
+    }
     cout <<"Ingrese el nombre del doctor: ";
     getline(cin, doctores.nombreMED);
     cout <<"Ingrese el apellido del doctor: ";
@@ -112,6 +120,10 @@ void LeerDoctor(tDoctores &doctores){
     getline(cin, doctores.especialidad);
     cout << "Ingrese la edad del doctor: ";
     cin >> doctores.edadMED;
+    if(doctores.edadMED < 1){
+      cout << "Ingrese la edad del doctor: ";
+      cin >> doctores.edadMED;
+    }
     cin.sync();
 }///FIN DE LA FUNCIÓN LEER DOCTOR
 
@@ -209,21 +221,23 @@ void Buscar_Doctores(tListaDoc &listadoc, string CedulaBuscar, bool &okdoc)
 void MostrarDoctor(tDoctores doctor){
 
 
-      cout << "Nombre del doctor: " << NombreCompleto(doctor) << endl;
-      cout << "   Edad del doctor: " << doctor.edadMED << endl;
-      cout << "   Cedula del doctor: " << doctor.cedula << endl;
-      cout << "   Especialidad del doctor: "<< doctor.especialidad<<endl;
-      cout <<endl;
+      cout <<"Nombre del doctor: " << NombreCompleto(doctor)<< endl;
+      cout << "Edad del doctor: " << doctor.edadMED << endl;
+      cout << "Cedula del doctor: " << doctor.cedula << endl;
+      cout << "Especialidad del doctor: "<< doctor.especialidad<<endl;
+
 
 }///FIN DE LA FUNCION MOSTRAR Doctor
 
 
 void ListadoDoctores(tListaDoc listadoc){
-
+  string linea(50, '-');
   for (int i = 0; i < listadoc.contadorDoc; i++)
   {
-      cout << setw(3) << right << i + 1 << ": ";
+      cout <<linea<<endl;
+      cout << setw(3) << right << i + 1 << ": "<<endl;
       MostrarDoctor(listadoc.elementosDoc[i]);
+      cout <<linea<<endl<<endl;
   }
 
 
