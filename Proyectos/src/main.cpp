@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 #include <string>
 #include "pacientes.h"
 #include "medicos.h"
@@ -39,10 +40,10 @@ int main(){
                             }
                             break;
                             case 2:
-                            {    
+                            {
                                 ListadoDoctores(listaDoc);
                                 cout <<endl;
-                                cout <<"Que doctor desea eliminar"<<endl;
+                                cout <<"Ingrese la posicion del doctor que desea eliminar"<<endl;
                                 cin >> pos;
                                 EliminarDoctor(listaDoc, pos-1,ok);
                             }
@@ -75,6 +76,8 @@ int main(){
                                 ListadoDoctores(listaDoc);
                             }
                         }
+                        system("pause");
+                        system("cls");
                         opcionDoctores = MenuDoctores();
                     }
                 }
@@ -144,12 +147,14 @@ int main(){
                             }
                             break;
                         }
+                        system("pause");
+                        system("cls");
                         opcionPacientes = Menu_Pac();
                     }
-                    
+
                 }
                 Guardar_Pac(lista);
-                
+
             }
             break;
             case 3:{
@@ -191,11 +196,11 @@ int main(){
                         break;
                         case 4:
                         {
-                            
+
                             cout <<"Ingrese el codigo a buscar de la cita: ";
                             cin >> codigo_buscar;
                             Buscar_cita(listacitas,codigo_buscar,ok);
-            
+
                         }
                         break;
                         case 5:
@@ -211,14 +216,18 @@ int main(){
                             ListadoCitas(listacitas);
                         }
                     }
+                    system("pause");
+                    system("cls");
                     opmenucitas = Menucitas();
                     }
 
                 Guardar_citas(listacitas);
-            }   
+            }
 
-        }   
-        opcionMenuPrincipal = MenuPrincipal();   
+        }
+        system("pause");
+        system("cls");
+        opcionMenuPrincipal = MenuPrincipal();
    }
    return 0;
 }
