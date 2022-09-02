@@ -87,12 +87,24 @@ void Leer_Pac(tPacientes &pacientes)
     cin.sync();
     cout << "Cedula: ";
     getline(cin, pacientes.cedulaPAC);
+    for(int i = 0; i < pacientes.cedulaPAC.size(); i++){
+        if(pacientes.cedulaPAC[i] != '1' && pacientes.cedulaPAC[i] != '2' &&pacientes.cedulaPAC[i] != '3' &&pacientes.cedulaPAC[i] != '4'
+        &&pacientes.cedulaPAC[i] != '5' &&pacientes.cedulaPAC[i] != '6' &&pacientes.cedulaPAC[i] != '7'
+        &&pacientes.cedulaPAC[i] != '8' &&pacientes.cedulaPAC[i] != '9' &&pacientes.cedulaPAC[i] != '0' ){
+          cout << "Cedula: ";
+          getline(cin, pacientes.cedulaPAC);
+        }
+    }
     cout << "Nombre: ";
     getline(cin, pacientes.nombrePAC);
     cout << "Apellidos: ";
     getline(cin, pacientes.apellidoPAC);
     cout << "Edad: ";
     cin >> pacientes.edadPAC;
+    if(pacientes.edadPAC < 1){
+      cout << "Edad: ";
+      cin >> pacientes.edadPAC;
+    }
     cin.sync();
 }
 // INSERTAR
@@ -135,28 +147,27 @@ string NombreCompleto(tPacientes pacientes)
 void Mostrar_Pac(tPacientes pacientes)
 {
 
-    cout << "Nombre del paciente: " << NombreCompleto(pacientes) << setw(3) << "|" << endl;
-    cout << "|"
-         << "    Cedula del paciente: " << pacientes.cedulaPAC << setw(10) << "|" << endl;
-    cout << "|"
-         << "    Edad del paciente: " << pacientes.edadPAC << setw(18) << "|" << endl;
-    cout << " ------------------------------------------" << endl;
-    cout << endl;
+    cout << "Nombre del paciente: " << NombreCompleto(pacientes)<<endl;
+    cout << "Cedula del paciente: " << pacientes.cedulaPAC<< endl;
+    cout << "Edad del paciente: " << pacientes.edadPAC<< endl;
+
 }
 // LISTADO
 void Listado_Pac(tLista lista)
 {
+    string linea(50,'-');
     for (int i = 0; i < lista.contador; i++)
     {
-        cout << " ------------------------------------------" << endl;
-        cout << "|" << setw(3) << right << i + 1 << ": ";
+        cout <<linea<<endl;
+        cout << setw(3) << right << i + 1 << ": "<<endl;
         Mostrar_Pac(lista.elementos[i]);
+        cout << linea<<endl<<endl;
     }
 }
 // ORDENAR
 void Ordenamiento_Pac(tLista &lista)
 {
-   
+
     for (int i = 1; i < lista.contador; i++)
     {
         int pos = i;
