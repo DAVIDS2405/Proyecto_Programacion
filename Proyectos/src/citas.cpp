@@ -185,16 +185,14 @@ void MostrarCita(tCita cita){
     cout << "Codigo de la cita:     " << cita.codigo_cita << endl;
     cout << "Cedula del doctor:   " << cita.cedula << endl;
     cout << "Cedula del paciente: " << cita.cedulaPAC << endl;
-    cout << "dia:                 " << cita.dia << endl;
-    cout << "mes:                 " << cita.mes << endl;
-    cout << "Anio:                 " << cita.anio << endl;
+    cout <<"Dia: "<< cita.dia <<"/"<< cita.mes<<"/"<< cita.anio << endl;
 }
 void ListadoCitas(tListaC listacita){
     string linea(50,'-');
     for (int i = 0; i < listacita.contadorCit; i++)
     {
         cout <<linea<<endl;
-        cout << setw(3) << right << i + 1 << ": ";
+        cout << setw(3) << right << i + 1 << ": "<<endl;
         MostrarCita(listacita.elementosCitas[i]);
         cout <<linea<<endl<<endl;
     }

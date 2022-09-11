@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <string>
+#include <locale.h>
 #include "pacientes.h"
 #include "medicos.h"
 #include "citas.h"
@@ -11,6 +12,7 @@ int MenuPrincipal();
 
 
 int main(){
+    setlocale(LC_CTYPE, "Spanish");
     tLista lista;
     tPacientes pacientes;
     tListaDoc listaDoc;
@@ -170,9 +172,11 @@ int main(){
                     {
                         case 1:
                         {
+                            cout << setw(37) << "PACIENTES REGISTRADOS "<< endl;
                             Listado_Pac(lista);
+                            cout << endl;
+                            cout << setw(37) << "DOCTORES REGISTRADOS " << endl;
                             ListadoDoctores(listaDoc);
-
                             Leer_citas(cita);
                             Insertar_cita(listacitas,cita,ok);
                         }
